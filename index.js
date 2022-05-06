@@ -5,7 +5,18 @@ const pc = newPlayableCharacter(100, 110)
 const npc = newNonPlayableCharacter(50, 300)
 
 // have the NPC start walking east immediately
-npc.walkEast()
+function sleep(time){
+    return new Promise(resolve => {
+        setTimeout(resolve, time)
+    })  
+}
+
+async function walkEast(time){
+    await sleep(time)
+    stop()
+}
+
+npc.walkEast(2)
 
 // Create the inventory
 const inventory = newInventory()
